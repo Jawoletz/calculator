@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+
+    /* outline: 1px solid aqua; */
+}
+
+:root {
+    --interface-width: 92%;
+    --interface-margin: 4%;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body, #frame, #keyboard, #digits, #operators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#frame {
+    width: 30%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 2%;
+}
+
+#display, #keyboard {
+    border: 1px solid black;
+    border-radius: 1%;
+}
+
+#display {
+    width: var(--interface-width);
+    height: 15%;
+    margin-top: var(--interface-margin);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 4%;
+    font-size: 3em;
+    box-shadow: inset 1px 1px black;
+}
+
+#keyboard {
+    width: var(--interface-width);
+    height: 80%;
+    margin: var(--interface-margin) 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4%;
+}
+
+#digits, #operators {
+    display: flex;
+    justify-content: space-evenly;
+    align-self: flex-end;
+}
+
+#digits {
+    width: 70%;
+    height: 95%;
+    flex-wrap: wrap;
+}
+
+#operators {
+    width: 30%;
+    height: 95%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.btn {
+    width: 9vh;
+    height: 9vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    box-shadow: 1px 1px 3px black;
+}
+
+#clear {
+    width: 20vh;
+    height: 5vh;
+    margin-left: auto;
+    margin-right: 4%;
+}
+
+
+
