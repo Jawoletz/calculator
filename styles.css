@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: sans-serif;
 
-    /* outline: 1px solid aqua; */
+    outline: 1px solid aqua;
 }
 
 :root {
@@ -66,18 +66,18 @@ body, #frame, #keyboard, #digits, #operators {
 
 #digits {
     width: 70%;
-    height: 95%;
+    height: 100%;
     flex-wrap: wrap;
 }
 
 #operators {
     width: 30%;
-    height: 95%;
+    height: 100%;
     flex-direction: column;
     justify-content: space-around;
 }
 
-.btn {
+button {
     width: 9vh;
     height: 9vh;
     display: flex;
@@ -88,10 +88,10 @@ body, #frame, #keyboard, #digits, #operators {
 }
 
 #clear {
-    width: 20vh;
+    width: 100%;
     height: 5vh;
-    margin-left: auto;
-    margin-right: 4%;
+    margin-right: auto;
+    margin-left: 2%;
 }
 
 
