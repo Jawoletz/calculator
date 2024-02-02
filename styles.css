@@ -12,13 +12,6 @@ html, body {
     height: 100vh;
 }
 
-button {
-    font-size: 1em;
-    padding: 1em;
-    border: 1px ridge black;
-    border-radius: 6px;
-}
-
 /* body, #frame, #display #keypad, #numberKeys, #operatorKeys {
     display: flex;
     justify-content: center;
@@ -36,7 +29,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 40vw;
+    width: 40vh;
     height: 70vh;
     border: 4px ridge black;
     border-radius: 6px;
@@ -52,14 +45,46 @@ body {
 
 #keypad {
     display: flex;
-    width: 100%;
+    height: 100%;
 }
 
 #numberKeys {
-    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
+
+#two { order: 7;}
+#one { order: 8;}
+#three { order: 9;}
+#four { order: 4;}
+#five { order: 5;}
+#six { order: 6;}
+#seven { order: 1;}
+#eight { order: 2;}
+#nine { order: 3;}
+#zero { order: 10;}
+#decimal { order: 11;}
+#negative { order: 12;}
 
 #operatorKeys {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#multiplicationBtn { order: 3;}
+#divisionBtn { order: 4;}
+#additionBtn { order: 5;}
+#subtractionBtn { order: 6;}
+#deleteBtn { order: 1;}
+#allClearBtn { order: 2;}
+#prevAnsBtn { order: 7;}
+#equalsBtn { order: 8;}
+
+button {
+    font-size: 1em;
+    padding: 1em;
+    border: 1px ridge black;
+    border-radius: 6px;
 }
