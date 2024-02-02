@@ -17,7 +17,7 @@ html, body {
     height: 100%;
 }
 
-body, #frame, #keyboard, #digits, #operators {
+body, #frame, #keyboard, #keys, #operators {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,13 +58,13 @@ body, #frame, #keyboard, #digits, #operators {
     padding: 4%;
 }
 
-#digits, #operators {
+#keys, #operators {
     display: flex;
     justify-content: space-evenly;
     align-self: flex-end;
 }
 
-#digits {
+#keys {
     width: 70%;
     height: 100%;
     flex-wrap: wrap;
