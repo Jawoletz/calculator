@@ -46,10 +46,11 @@ displayBtn.forEach(button => {
     })
 
 // Parse equation to solve
-const finalEquation = [];
-let str = "";
+
 equalsBtn.addEventListener('click', function() {
 // Combine number characters [1,5,+,1,1] => [15,+,11]
+    finalEquation = [];
+    let str = "";
     for (let i = 0; i < displayEquation.length; i++) {
         if (displayEquation[i] == "0" ||
         displayEquation[i] == "1" ||
@@ -64,33 +65,45 @@ equalsBtn.addEventListener('click', function() {
         displayEquation[i] == "." ) {
             str = str.concat(displayEquation[i])
         } else {
-            finalEquation.push(str, displayEquation[i]);
+            finalEquation.push(Number(str), displayEquation[i]);
             str = "";
         } 
     }
-    finalEquation.push(str);
+    finalEquation.push(Number(str));
 
-    console.log(solve(finalEquation));
+    solve(finalEquation);
 })
 
 // solve recursively
-function solve(equation, x, y) {
-    for (let i = 0; i < equation.length; i++) {
-        
-        if (equation[i] == "x") {
-            solve()
-            multiply(equation[i-1], equation.slice(i+1));
-        }
-        if (equation[i] == "/") {
-            divide(equation[i-1], equation.slice(i+1));
-        }
-        if (equation[i] == "+") {
-            add(equation[i-1], equation.slice(i+1));
-        }
-        if (equation[i] == "-") {
-            subtract(equation[i-1], equation.slice(i+1));
-        }
+function solve(equation) {
+    if (equation.length == 1) {
+        console.log(equation);
+        return;
     }
+    // Search entire equation for each operator one at a time to do PEMDAS
+    let index = 0;
+    let temp = 0;
+    if (equation.indexOf("x") != -1) {
+        index = equation.indexOf("x");
+        temp = multiply(equation[index-1], equation[index+1]);
+        equation.splice(index-1,3,temp);
+    }
+    if (equation.indexOf("/") != -1) {
+        index = equation.indexOf("/");
+        temp = divide(equation[index-1], equation[index+1]);
+        equation.splice(index-1,3,temp);
+    }
+    if (equation.indexOf("+") != -1) {
+        index = equation.indexOf("+");
+        temp = add(equation[index-1], equation[index+1]);
+        equation.splice(index-1,3,temp);
+    }
+    if (equation.indexOf("-") != -1) {
+        index = equation.indexOf("-");
+        temp = subtract(equation[index-1], equation[index+1]);
+        equation.splice(index-1,3,temp);
+    }
+    solve (equation);
 }
 
 // Mathematical Operation Functions
