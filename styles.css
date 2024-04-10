@@ -41,6 +41,11 @@ body {
     width: 100%;
     height: 20%;
     border: 2px inset black;
+    font-size: 6vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 1vh;
 }
 
 #keypad {
@@ -54,23 +59,33 @@ body {
     justify-content: space-evenly;
 }
 
-#two { order: 7;}
-#one { order: 8;}
-#three { order: 9;}
-#four { order: 4;}
-#five { order: 5;}
-#six { order: 6;}
-#seven { order: 1;}
-#eight { order: 2;}
-#nine { order: 3;}
-#zero { order: 10;}
-#decimal { order: 11;}
-#negative { order: 12;}
+.displayBtn {
+    width: 7vh;
+    height: 9vh;
+}
+
+#oneBtn { order: 7;}
+#twoBtn { order: 8;}
+#threeBtn { order: 9;}
+#fourBtn { order: 4;}
+#fiveBtn { order: 5;}
+#sixBtn { order: 6;}
+#sevenBtn { order: 1;}
+#eightBtn { order: 2;}
+#nineBtn { order: 3;}
+#zeroBtn { order: 10;}
+#decimalBtn { order: 11;}
+#negativeBtn { order: 12;}
 
 #operatorKeys {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+#operatorKeys > button {
+    width: 6vh;
+    height: 9vh;
 }
 
 #multiplicationBtn { order: 3;}

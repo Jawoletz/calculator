@@ -25,7 +25,7 @@ const equalsBtn = document.getElementById('equalsBtn');
 
 // Display buttons when pressed
 const display = document.getElementById('display');
-const displayEquation = [];
+let displayEquation = [];
 const displayBtn = document.querySelectorAll('.displayBtn');
 displayBtn.forEach(button => {
     button.addEventListener('click', function() {
@@ -49,7 +49,7 @@ displayBtn.forEach(button => {
 
 equalsBtn.addEventListener('click', function() {
 // Combine number characters [1,5,+,1,1] => [15,+,11]
-    finalEquation = [];
+    let finalEquation = [];
     let str = "";
     for (let i = 0; i < displayEquation.length; i++) {
         if (displayEquation[i] == "0" ||
@@ -104,6 +104,13 @@ function solve(equation) {
         equation.splice(index-1,3,temp);
     }
     solve (equation);
+    // Update display
+    display.textContent = equation;
+    displayEquation.length = 0;
+    console.log(equation[0].toString());
+    for (let i = 0; i < (equation[0].toString()).length; i++) {
+        displayEquation.push((equation[0].toString())[i]);
+    }
 }
 
 // Mathematical Operation Functions
