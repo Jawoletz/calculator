@@ -31,24 +31,55 @@ displayBtn.forEach(button => {
     button.addEventListener('click', function() {
         displayEquation.push(button.textContent);
         display.textContent = displayEquation.join('');
+        checkFontSize();
     });
 });
 
 // Delete and clear displayEquation
-    deleteBtn.addEventListener('click', function() {
-        displayEquation.pop();
+    deleteBtn.addEventListener('click', backspace)
+    allClearBtn.addEventListener('click', allClear)
+
+function backspace() {
+    displayEquation.pop();
+    display.textContent = displayEquation.join('');
+}
+
+function allClear() {
+    displayEquation.length = 0;
+    display.textContent = '';
+}
+
+// Add keyboard input
+document.addEventListener('keydown', logKey);
+function logKey(e) {
+    console.log(e.code);
+    if (!isNaN(e.key) ||
+    e.key == "x" ||
+    e.key == "*" ||
+    e.key == "/" ||
+    e.key == "-" ||
+    e.key == "+" ||
+    e.key == ".") {
+        displayEquation.push(e.key);
         display.textContent = displayEquation.join('');
-    });
+        checkFontSize();
+    }
+    if (e.code == "Backspace") backspace();
+    if (e.code == "Delete") allClear();
+    if (e.code == "Enter" || e.code == "NumpadEnter") prepareEquation();
+}
 
-    allClearBtn.addEventListener('click', function() {
-        displayEquation.length = 0;
-        display.textContent = '';
-    })
-
+// Adjust display font size
+function checkFontSize() {
+    if (display.textContent.length <= 10) display.style.fontSize = "6vh";
+    if (display.textContent.length > 10) display.style.fontSize = "4vh";
+    if (display.textContent.length > 16) display.style.fontSize = "2vh";
+}
 // Parse equation to solve
 
-equalsBtn.addEventListener('click', function() {
-// Combine number characters [1,5,+,1,1] => [15,+,11]
+equalsBtn.addEventListener('click', prepareEquation)
+
+function prepareEquation() {
     let finalEquation = [];
     let str = "";
     for (let i = 0; i < displayEquation.length; i++) {
@@ -72,7 +103,7 @@ equalsBtn.addEventListener('click', function() {
     finalEquation.push(Number(str));
 
     solve(finalEquation);
-})
+}
 
 // solve recursively
 function solve(equation) {
@@ -88,19 +119,24 @@ function solve(equation) {
         temp = multiply(equation[index-1], equation[index+1]);
         equation.splice(index-1,3,temp);
     }
+    if (equation.indexOf("*") != -1) {
+        index = equation.indexOf("*");
+        temp = multiply(equation[index-1], equation[index+1]);
+        equation.splice(index-1,3,temp);
+    }
     if (equation.indexOf("/") != -1) {
         index = equation.indexOf("/");
         temp = divide(equation[index-1], equation[index+1]);
         equation.splice(index-1,3,temp);
     }
-    if (equation.indexOf("+") != -1) {
-        index = equation.indexOf("+");
-        temp = add(equation[index-1], equation[index+1]);
-        equation.splice(index-1,3,temp);
-    }
     if (equation.indexOf("-") != -1) {
         index = equation.indexOf("-");
         temp = subtract(equation[index-1], equation[index+1]);
+        equation.splice(index-1,3,temp);
+    }
+    if (equation.indexOf("+") != -1) {
+        index = equation.indexOf("+");
+        temp = add(equation[index-1], equation[index+1]);
         equation.splice(index-1,3,temp);
     }
     solve (equation);
@@ -129,3 +165,4 @@ function add(x, y) {
 function subtract(x, y) {
     return x - y;
 }
+

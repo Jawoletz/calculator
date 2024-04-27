@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: sans-serif;
 
-    outline: 1px solid orange;
+    /* outline: 1px solid orange; */
 }
 
 html, body {
@@ -46,6 +46,8 @@ body {
     justify-content: start;
     align-items: center;
     padding: 0 1vh;
+    overflow-wrap: anywhere;
+    line-height: 1.2em;
 }
 
 #keypad {
